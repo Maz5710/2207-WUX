@@ -1,16 +1,15 @@
 // Variable for Mongoose 
-
 const mongoose = require ('mongoose'); 
 
 // Rule set for Project Data
-
 const projectSchema = new mongoose.Schema({
-    _id: moongoose.Schema.Types.ObjectId, 
-    name: String,
-    image_url: String, 
-    user_id: {
+    _id: mongoose.Schema.Types.ObjectId, 
+    project_description: String,
+    project_name: String,
+    project_img: String, 
+    username: {
         type: mongoose.Schema.Types.ObjectId, 
-        ref: 'User'
+        ref: 'Username'
     }
 })
 
