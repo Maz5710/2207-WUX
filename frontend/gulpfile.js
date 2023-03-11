@@ -7,6 +7,7 @@ var gulp = require('gulp');
   rename = require('gulp-rename');
   minifyCss = require('gulp-minify-css');
 
+
 // Server Task
 function serve (done) {
     connect.server({
@@ -35,9 +36,9 @@ function html (done) {
 		done();
 };
 
-// JS Lint Task for correcting and monitoring your custom.js
+// JS Lint Task for correcting and monitoring your script.js
 function lint (done) {
-  gulp.src('js/custom.js')
+  gulp.src('js/script.js')
   .pipe(jshint())
 	.pipe(jshint.reporter('default'))
 	.pipe(connect.reload());
