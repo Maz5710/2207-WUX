@@ -1,0 +1,176 @@
+// MIXIN - to use the @mixin's below, type in @include [mixin-name] into a code block you want to apply the styles of that @mixin into.
+
+// FONTS
+// Chivo
+@mixin chivo {
+    font-family: "Chivo", sans-serif;
+    font-weight: 900;
+}
+
+// Roboto Mono Regular
+@mixin rmReg {
+    font-family: "Roboto Mono", monospace;
+    font-weight: 400;
+}
+
+// Roboto Mono Bold
+@mixin rmBold {
+    font-family: "Roboto Mono", monospace;
+    font-weight: 700;
+}
+
+// BTNS
+// To apply to: Close, Edit, Delete, Add Project buttons
+@mixin action-btn {
+    @include rmBold;
+    font-size: 18px;
+    color: $night;
+    text-decoration: none;
+    position: absolute;
+    top: 10px;
+    right: 15px;
+}
+
+// To apply to: HOVER Close, Edit, Delete, Add Project buttons
+@mixin action-btn-hover {
+    transition: 0.15s ease-in;
+    border-bottom: solid 2px $night;
+}
+
+// To apply to: Buttons with borders, Login, Submit, etc
+@mixin cta {
+    @include chivo;
+    font-size: 20px;
+    color: $blue;
+    width: 40%;
+    height: 40px;
+    border: solid 2px $blue;
+    background-color: $offwhite;
+}
+
+// To apply to: HOVER Buttons with borders, Login, Submit, etc
+@mixin cta-hover {
+    transition: 0.3s;
+    color: $offwhite;
+    border: solid 2px $offwhite;
+    background-color: $blue;
+}
+
+// VARIABLES - how to use example:
+// color: $variable-name;
+
+// COLOURS 
+$night: #011502;
+$grey: #CFCFC7;
+$offwhite: #FEFBF3;
+$blue: #004CFF;
+$onyx: #323638;
+
+
+// Nesting
+html,
+body {
+    margin: 0;
+    padding: 0;
+    background-color: $offwhite;
+
+    .off-canvas-open {
+        writing-mode: vertical-rl;
+        rotate: 180deg;
+        @include chivo;
+        font-size: 25px;
+        color: $blue;
+        text-decoration: none;
+        position: absolute;
+        top: 40px;
+        right: 20px;
+    }
+
+    .off-canvas-open:hover {
+        transition: 0.15s ease-in;
+        border-left: solid 3px $blue;
+        transform: translateX(-3px);
+    }
+
+    .sidebar {
+        position: fixed;
+        top: 0;
+        bottom: 0;
+        right: 0;
+        width: 400px;
+        background-color: $offwhite;
+        border: solid 2px $blue;
+        transition: transform 0.3s ease-out;
+
+        form {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            width: 100%;
+            height: 70%;
+
+            .off-canvas-close {
+                @include action-btn;
+            }
+
+            .off-canvas-close:hover {
+                @include action-btn-hover;
+            }
+
+            .form-container {
+                display: flex;
+                flex-direction: column;
+                justify-content: center;
+                width: 80%;
+                height: 40%;
+
+                label {
+                    @include rmBold;
+                    font-size: 18px;
+                    margin-bottom: 5px;
+                }
+
+                input {
+                    @include rmReg;
+                    font-size: 18px;
+                    height: 40px;
+                    margin-bottom: 25px;
+                    color: $onyx;
+                    background-color: $grey;
+                    border: solid 1px $night;
+                }
+
+            }
+
+            #loginBtn {
+                @include cta;
+                position: relative;
+                left: 80px;
+            }
+
+            #loginBtn:hover {
+                @include cta-hover;
+            }
+
+        }
+
+    }
+
+    .sidebar.is-hidden {
+        transform: translateX(405px);
+    }
+
+    .title-container {
+        margin-left: 80px;
+        margin-top: 175px;
+
+        #title {
+            @include chivo;
+            font-size: 95px;
+            color: $onyx;
+        }
+
+    }
+
+}

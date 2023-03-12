@@ -5,33 +5,85 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- Google Font Link -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Chivo:wght@900&family=Roboto+Mono:wght@400;700&display=swap"
+        rel="stylesheet">
     <!-- Custom CSS -->
-    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/custom.min.css">
     <title>2207-WUX</title>
 </head>
 <!-- End of Head -->
 
 <body>
     <!-- Body Container -->
-    <!-- Login Btn -->
-    <!-- End of Login Btn -->
-    <!-- Off Canvas -->
-    <!-- End of Off Canavas -->
-    <!-- Class Title -->
-    <!-- End of Class Title -->
-    <!-- Designers -->
-    <!-- End of Designers -->
-    <!-- Portfolio Section -->
-    <!-- End of Portfolio Section -->
-    <!-- Designer Profile -->
-    <!-- End of Designer Profile -->
-    <!-- Add Project Section-->
-    <!-- End of Add Project -->
-    <!-- Edit Project -->
-    <!-- End of Edit Project -->
-    <!-- Delete Project -->
-    <!-- End of Delete Project -->
+    <div class="body-container">
 
+        <!-- Off Canvas Open Btn -->
+        <div class="login">
+            <a href="#" class="off-canvas-open">Login</a>
+        </div>
+        <!-- End of Off Canvas Open Btn -->
+
+        <!-- Off Canvas -->
+        <div class="sidebar is-hidden">
+
+            <!-- Login Form -->
+            <form action="action_page.php" method="post">
+
+                <div>
+                    <a href="#" class="off-canvas-close">Close</a>
+                </div>
+
+                <div class="form-container">
+                    <label for="uname">Username</label>
+                    <input type="text" placeholder="Enter Username" name="uname" required>
+
+                    <label for="psw">Password</label>
+                    <input type="password" placeholder="Enter Password" name="psw" required>
+                </div>
+
+                <button id="loginBtn" type="submit">Login</button>
+
+            </form>
+            <!-- End of Login Form -->
+
+        </div>
+        <!-- End of Off Canavas -->
+
+
+        <!-- Class Title -->
+        <div class="title-container">
+            <h1 id="title">2207-WUX</h1>
+        </div>
+        <!-- End of Class Title -->
+
+
+        <!-- Designers -->
+        <!-- End of Designers -->
+
+
+        <!-- Portfolio Section -->
+        <!-- End of Portfolio Section -->
+
+
+        <!-- Designer Profile -->
+        <!-- End of Designer Profile -->
+
+
+        <!-- Add Project Section-->
+        <!-- End of Add Project -->
+
+
+        <!-- Edit Project -->
+        <!-- End of Edit Project -->
+
+
+        <!-- Delete Project -->
+        <!-- End of Delete Project -->
+
+    </div>
 
 
     <!-- jQuery -->
