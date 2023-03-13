@@ -9,7 +9,7 @@ const projectSchema = new mongoose.Schema({
     project_img: String, 
     username: {
         type: mongoose.Schema.Types.ObjectId, 
-        ref: 'Username'
+        ref: 'User'
     }
 })
 

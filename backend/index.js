@@ -63,7 +63,7 @@ app.post('/addProject', (req, res) => {
       project_description: req.body.project_description,
       project_name: req.body.project_name,
       project_img: req.body.project_img,
-      user_id: req.body.user_id
+      username: req.body.username
     });
 
     //save to the database and notify the user
@@ -80,7 +80,7 @@ app.patch('/updateProject/:id', (req, res) => {
             project_description: req.body.project_description,
             project_name: req.body.project_name,
             project_img: req.body.project_img,
-            user_id: req.body.user_id
+            username: req.body.username
         }
         Project.updateOne({
             _id: idParam
@@ -94,7 +94,7 @@ app.patch('/updateProject/:id', (req, res) => {
 // DELETE using 'DELETE' project
 app.delete('/deleteProject/:id', (req,res) => {
     const idParam = req.params.id;
-    project.findOne({
+    Project.findOne({
         _id: idParam
     }, (err, project) => {
         if (project) {
@@ -134,3 +134,4 @@ app.post('/loginUser', ( req, res)=>{
     }); 
   }); 
   //end of post for login
+
