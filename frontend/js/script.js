@@ -22,18 +22,18 @@ $(document).ready(function () {
 
 
     // Off Canvas Button
-    const offCanvasOpen = document.querySelector(".off-canvas-open")
-    const sidebar = document.querySelector(".sidebar")
-    const offCanvasClose = document.querySelector(".off-canvas-close")
+    const offCanvasOpen = document.querySelector(".off-canvas-open");
+    const sidebar = document.querySelector(".sidebar");
+    const offCanvasClose = document.querySelector(".off-canvas-close");
 
     offCanvasOpen.addEventListener("click", function () {
-        sidebar.classList.toggle("is-hidden")
-    })
+        sidebar.classList.toggle("is-hidden");
+    });
     console.log(offCanvasOpen);
 
     offCanvasClose.addEventListener("click", function () {
-        sidebar.classList.toggle("is-hidden")
-    })
+        sidebar.classList.toggle("is-hidden");
+    });
     console.log(offCanvasClose);
 
 
@@ -57,4 +57,4 @@ $(document).ready(function () {
     //     });
     // }
 
-})
+});
