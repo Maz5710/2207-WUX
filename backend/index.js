@@ -13,7 +13,7 @@ const User = require('./models/user');
 
 
 // Set the port number for our local server
-const port = 5500; 
+const port = 5500;
 
 // app.use for express 
 app.use((req, res, next) => {
@@ -31,7 +31,7 @@ app.use(bodyParser.urlencoded({
 app.use(cors());
 
 // Sent to backend on req
-app.get('/', (req, res) => res.send("Hello from the backend 2207-WUX")); 
+app.get('/', (req, res) => res.send("Hello from the backend 2207-WUX"));
 
 // Setup Mongoose Connection to MongoDB
 // replace user and password, clustername and mongoDB name with template literals instead of config user data 
@@ -59,16 +59,16 @@ app.get('/allProjectsFromDB', (req, res) => {
 // Post Method to CREATE a project
 app.post('/addProject', (req, res) => {
     const dbProject = new Project({
-      _id: new mongoose.Types.ObjectId,
-      project_description: req.body.project_description,
-      project_name: req.body.project_name,
-      project_img: req.body.project_img,
-      user_id: req.body.user_id
+        _id: new mongoose.Types.ObjectId,
+        project_description: req.body.project_description,
+        project_name: req.body.project_name,
+        project_img: req.body.project_img,
+        user_id: req.body.user_id
     });
 
     //save to the database and notify the user
     dbProject.save().then(result => {
-      res.send(result);
+        res.send(result);
     }).catch(err => res.send(err));
 })
 
@@ -92,7 +92,7 @@ app.patch('/updateProject/:id', (req, res) => {
 })
 
 // DELETE using 'DELETE' project
-app.delete('/deleteProject/:id', (req,res) => {
+app.delete('/deleteProject/:id', (req, res) => {
     const idParam = req.params.id;
     project.findOne({
         _id: idParam
@@ -120,17 +120,19 @@ app.get('/allUsersFromDB', (req, res) => {
 })
 
 //Login User
-app.post('/loginUser', ( req, res)=>{
-    User.findOne({username:req.body.username},(err,userResult)=>{
-      if (userResult){
-        if (bcrypt.compareSync(req.body.password, userResult.password)){
-          res.send(userResult);
+app.post('/loginUser', (req, res) => {
+    User.findOne({
+        username: req.body.username
+    }, (err, userResult) => {
+        if (userResult) {
+            if (bcrypt.compareSync(req.body.password, userResult.password)) {
+                res.send(userResult);
+            } else {
+                res.send('not authorized');
+            } // inner if
         } else {
-          res.send('not authorized');
-        }// inner if
-      } else {
-        res.send('User not found.');
-      } 
-    }); 
-  }); 
-  //end of post for login
+            res.send('User not found.');
+        }
+    });
+});
+//end of post for login
