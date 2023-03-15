@@ -11,7 +11,6 @@ const config = require('./config.json'); // get config
 const Project = require('./models/project');
 const User = require('./models/user');
 
-
 // Set the port number for our local server
 const port = 5500; 
 
@@ -63,7 +62,7 @@ app.post('/addProject', (req, res) => {
       project_description: req.body.project_description,
       project_name: req.body.project_name,
       project_img: req.body.project_img,
-      user_id: req.body.user_id
+      username: req.body.username
     });
 
     //save to the database and notify the user
@@ -80,7 +79,7 @@ app.patch('/updateProject/:id', (req, res) => {
             project_description: req.body.project_description,
             project_name: req.body.project_name,
             project_img: req.body.project_img,
-            user_id: req.body.user_id
+            username: req.body.username
         }
         Project.updateOne({
             _id: idParam
@@ -123,14 +122,15 @@ app.get('/allUsersFromDB', (req, res) => {
 app.post('/loginUser', ( req, res)=>{
     User.findOne({username:req.body.username},(err,userResult)=>{
       if (userResult){
-        if (bcrypt.compareSync(req.body.password, userResult.password)){
+        if (req.body.password === userResult.password){
           res.send(userResult);
         } else {
           res.send('not authorized');
         }// inner if
       } else {
-        res.send('User not found.');
-      } 
-    }); 
-  }); 
-  //end of post for login
+        res.send('user not found. Please register');
+      }//outer if
+    });//find one ends
+  });//end of post for login
+
+  

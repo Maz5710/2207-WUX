@@ -37,14 +37,14 @@
                 </div>
 
                 <div class="form-container">
-                    <label for="uname">Username</label>
-                    <input type="text" placeholder="Enter Username" name="uname" required>
+                    <label for="username">Username</label>
+                    <input id="username" type="text" placeholder="Enter Username" name="username" required>
 
-                    <label for="psw">Password</label>
-                    <input type="password" placeholder="Enter Password" name="psw" required>
+                    <label for="password">Password</label>
+                    <input id="password" type="password" placeholder="Enter Password" name="password" required>
                 </div>
 
-                <button id="loginBtn" type="submit">Login</button>
+                <button id="loginBtn" type="login-submit">Login</button>
 
             </form>
             <!-- End of Login Form -->
@@ -202,6 +202,12 @@
 
 
         <!-- Portfolio Section -->
+        <div class="container p-5">
+            <h1 class="mt-5">Projects</h1>
+            <button id="viewProjects" class="btn btn-primary" type="button">View Projects</button>
+            <div class="row" id="result">
+            </div>
+        </div>
         <!-- End of Portfolio Section -->
 
 

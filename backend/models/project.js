@@ -8,7 +8,7 @@ const projectSchema = new mongoose.Schema({
     project_name: String,
     project_img: String, 
     username: {
-        type: mongoose.Schema.Types.ObjectId, 
+        type: String, 
         ref: 'Username'
     }
 })
