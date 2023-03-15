@@ -26,14 +26,15 @@
     font-size: 18px;
     color: $night;
     text-decoration: none;
-    position: absolute;
-    top: 10px;
-    right: 15px;
 }
 
 // To apply to: HOVER Close, Edit, Delete, Add Project buttons
 @mixin action-btn-hover {
     transition: 0.15s ease-in;
+    border-bottom: solid 2px $night;
+}
+
+@mixin action-btn-focus {
     border-bottom: solid 2px $night;
 }
 
@@ -93,6 +94,7 @@ body {
     }
 
     .sidebar {
+        z-index: 99;
         position: fixed;
         top: 0;
         bottom: 0;
@@ -112,6 +114,9 @@ body {
 
             .off-canvas-close {
                 @include action-btn;
+                position: absolute;
+                top: 10px;
+                right: 15px;
             }
 
             .off-canvas-close:hover {
@@ -169,8 +174,156 @@ body {
             @include chivo;
             font-size: 95px;
             color: $onyx;
+            margin-bottom: 20px;
         }
 
+    }
+
+    .accordion {
+
+        #accordionButton {
+            // position: relative;
+            // display: block;
+            // text-align: left;
+            // width: 100%;
+            // padding: 1em 0;
+            @include chivo;
+            font-size: 65px;
+            color: $grey;
+            border: none;
+            background: none;
+            outline: none;
+
+            &:hover {
+                cursor: pointer;
+                color: $night;
+            }
+
+            .accordion-title {
+                padding-left: 80px;
+            }
+
+        }
+
+        #accordionButton[aria-expanded='true'] {
+            color: $night;
+
+            +.accordion-content {
+                opacity: 1;
+                transition: all 200ms linear;
+                will-change: opacity, max-height;
+                border: solid 1px $blue;
+            }
+        }
+
+        .accordion-content {
+            opacity: 0;
+            overflow: hidden;
+            transition: opacity 200ms linear, max-height 200ms linear;
+            will-change: opacity, max-height;
+
+            .projects-carousel {
+                display: flex;
+                flex-direction: row;
+                justify-content: space-evenly;
+
+                .action-btns {
+                    display: flex;
+                    flex-direction: row;
+                    justify-content: space-evenly;
+                }
+            }
+        }
+    }
+
+    .edit-accordion {
+
+        #editAccordionButton {
+            @include action-btn;
+
+            &:hover {
+                @include action-btn-hover;
+            }
+
+            &:focus,
+            &:active {
+                @include action-btn-focus;
+            }
+
+            .accordion-title {
+                padding-left: 80px;
+            }
+
+        }
+
+        #editAccordionButton[aria-expanded='true'] {
+            color: $night;
+
+            +.edit-accordion-content {
+                opacity: 1;
+                transition: all 200ms linear;
+                will-change: opacity, max-height;
+                border: solid 1px $blue;
+            }
+        }
+
+        .edit-accordion-content {
+            opacity: 0;
+            overflow: hidden;
+            transition: opacity 200ms linear, max-height 200ms linear;
+            will-change: opacity, max-height;
+
+            p {
+                font-size: 1rem;
+                font-weight: 300;
+                margin: 2em 0;
+            }
+        }
+    }
+
+    .delete-accordion {
+
+        #deleteAccordionButton {
+            @include action-btn;
+
+            &:hover {
+                @include action-btn-hover;
+            }
+
+            &:focus,
+            &:active {
+                @include action-btn-focus;
+            }
+
+            .accordion-title {
+                padding-left: 80px;
+            }
+
+        }
+
+        #deleteAccordionButton[aria-expanded='true'] {
+            color: $night;
+
+            +.delete-accordion-content {
+                opacity: 1;
+                transition: all 200ms linear;
+                will-change: opacity, max-height;
+                border: solid 1px $blue;
+            }
+        }
+
+        .delete-accordion-content {
+            opacity: 0;
+            overflow: hidden;
+            transition: opacity 200ms linear, max-height 200ms linear;
+            will-change: opacity, max-height;
+
+            p {
+                font-size: 1rem;
+                font-weight: 300;
+                margin: 2em 0;
+            }
+        }
     }
 
 }

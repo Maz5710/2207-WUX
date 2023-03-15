@@ -22,39 +22,69 @@ $(document).ready(function () {
 
 
     // Off Canvas Button
-    const offCanvasOpen = document.querySelector(".off-canvas-open")
-    const sidebar = document.querySelector(".sidebar")
-    const offCanvasClose = document.querySelector(".off-canvas-close")
+    const offCanvasOpen = document.querySelector(".off-canvas-open");
+    const sidebar = document.querySelector(".sidebar");
+    const offCanvasClose = document.querySelector(".off-canvas-close");
 
     offCanvasOpen.addEventListener("click", function () {
-        sidebar.classList.toggle("is-hidden")
-    })
+        sidebar.classList.toggle("is-hidden");
+    });
     console.log(offCanvasOpen);
 
     offCanvasClose.addEventListener("click", function () {
-        sidebar.classList.toggle("is-hidden")
-    })
+        sidebar.classList.toggle("is-hidden");
+    });
     console.log(offCanvasClose);
 
 
-    // // Accordion
-    // const acc = document.getElementsByClassName("accordion");
-    // let i;
+    // Accordion
+    const items = document.querySelectorAll(".accordion #accordionButton");
+    const editItemAccordion = document.querySelectorAll(".edit-accordion #editAccordionButton");
+    const deleteItemAccordion = document.querySelectorAll(".delete-accordion #deleteAccordionButton");
 
-    // for (i = 0; i < acc.length; i++) {
-    //     acc[i].addEventListener("click", function () {
-    //         /* Toggle between adding and removing the "active" class,
-    //         to highlight the button that controls the panel */
-    //         this.classList.toggle("active");
+    function toggleAccordion() {
+        const itemToggle = this.getAttribute('aria-expanded');
 
-    //         /* Toggle between hiding and showing the active panel */
-    //         const panel = this.nextElementSibling;
-    //         if (panel.style.display === "block") {
-    //             panel.style.display = "none";
-    //         } else {
-    //             panel.style.display = "block";
-    //         }
-    //     });
-    // }
+        for (i = 0; i < items.length; i++) {
+            items[i].setAttribute('aria-expanded', 'false');
+        }
 
-})
+        if (itemToggle == 'false') {
+            this.setAttribute('aria-expanded', 'true');
+        }
+    }
+
+    items.forEach(item => item.addEventListener('click', toggleAccordion));
+
+    
+    function toggleEditAccordion() {
+        const editToggle = this.getAttribute("aria-expanded");
+
+        for (i = 0; i < editItemAccordion.length; i++) {
+            editItemAccordion[i].setAttribute("aria-expanded", "false");
+        }
+
+        if (editToggle == "false") {
+            this.setAttribute("aria-expanded", "true");
+        }
+    }
+
+    editItemAccordion.forEach(item => item.addEventListener("click", toggleEditAccordion));
+
+
+    function toggleDeleteAccordion() {
+        const deleteToggle = this.getAttribute("aria-expanded");
+
+        for (i = 0; i < deleteItemAccordion.length; i++) {
+            deleteItemAccordion[i].setAttribute("aria-expanded", "false");
+        }
+
+        if (deleteToggle == "false") {
+            this.setAttribute("aria-expanded", "true");
+        }
+    }
+
+    deleteItemAccordion.forEach(item => item.addEventListener("click", toggleDeleteAccordion));
+
+
+});
