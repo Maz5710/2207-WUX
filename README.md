@@ -7,7 +7,7 @@ This was created with html, CSS, JavaScript and using a custom API – MongoDB.
 The aim was to list all class students, a function to filter by student name to show only their work plus profile with links to github and website.
 The student (user) can edit or delete their projects when logged in.
 
-We used Asana to to plan the project timeline and create tasks, following the Agile methodoly.
+We used Asana to plan and track the project timeline and create tasks, following the Agile methodoly.
 
 ## Wireframes
 Low-fi
