@@ -2,8 +2,12 @@
 
 ## Overview
 As a group (Patrica Solis, India Storey and Marian Arnot) we worked together to create an application that shows off each student’s project class work.
-This was created with html, CSS, JavaScript and using a custom API – MongoDB. The aim was to list all class students, a function to filter by student name to show only their work plus profile with links to github and website.
+This was created with html, CSS, JavaScript and using a custom API – MongoDB. 
+
+The aim was to list all class students, a function to filter by student name to show only their work plus profile with links to github and website.
 The student (user) can edit or delete their projects when logged in.
+
+We used Asana to to plan the project timeline and create tasks, following the Agile methodoly.
 
 ## Wireframes
 Low-fi
