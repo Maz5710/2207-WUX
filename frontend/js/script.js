@@ -23,11 +23,12 @@ $(document).ready(function () {
         }
     });
 
+    
     function getAllProjects() {
         let username = sessionStorage.getItem ('username');
-        if (!username) {
-            alert ('Please log in');
-       } else {
+    //     if (!username) {
+    //         alert ('Please log in');
+    //    } else {
         $.ajax({
             url: `http://${url}/allProjectsFromDB`,
             type: `GET`,
@@ -36,46 +37,28 @@ $(document).ready(function () {
                 let results = document.getElementById('result');
                 results.innerHTML = '';
                 for (let i = 0; i < projectsFromMongo.length; i++) {
+                    let project = projectsFromMongo[i];
                     let createdBy = projectsFromMongo[i].username;
                     console.log(projectsFromMongo[i]);
-                    if (createdBy === username) {
+                    
                         results.innerHTML += `
-                        <div class="col-4 mt-3 mb-3">
-                            <div class="card">
-                            <img class="card-img-top" src="${projectsFromMongo[i].project_img}" alt="${projectsFromMongo[i].project_name} image">
-                                <div class="card-body">
-                                    <h5 class="card-title">${projectsFromMongo[i].project_name}</h5>
-                                     <button value="${projectsFromMongo[i]._id}" class="btn delete btn-primary" type="button" name="button">Delete</button>
-                                     <button value="${projectsFromMongo[i]._id}" data-bs-toggle="modal" data-bs-target="#editModal" class="btn edit btn-primary" type="button" name="button">Edit</button>
-                                     <button value="${projectsFromMongo[i]._id}" data-bs-toggle="modal" data-bs-target="#readmoreModal" class="btn readmore btn-primary" type="button" name="button">Read More</button>
-                                </div>
-                            </div>
-                        </div>
+                        ${project.project_name}
+                        ${project.project_img}
+                        ${project.project_description}
+                        
                         `;
-                    } else {
-                        results.innerHTML += `
-                        <div class="col-4 mt-3 mb-3">
-                            <div class="card">
-                            <img class="card-img-top" src="${projectsFromMongo[i].image_url}" alt="${prjoectsFromMongo[i].name} image">
-                                <div class="card-body">
-                                    <h5 class="card-title">${projectsFromMongo[i].project_name}</h5>
-                                     <button value="${projectsFromMongo[i]._id}" data-bs-toggle="modal" data-bs-target="#readmoreModal" class="btn readmore btn-primary" type="button" name="button">Read More</button>
-                                </div>
-                            </div>
-                        </div>
-                        `;
-                    }
+                    
 
-                    editProducts();
-                    deleteButtons();
-                    readmore();
+                    // editProducts();
+                    // deleteButtons();
+                    // readmore();
                 }
             },
             error: function () {
                 alert('Unable to get projects');
             }
         });
-    }
+    // }
 }
 
     //View Projects onclick of View Projects Button
