@@ -327,3 +327,25 @@ body {
     }
 
 }
+
+// Logout Button 
+
+#logoutBtn {
+    @include cta;
+    position: relative;
+    left: 200px;
+}
+
+#logoutBtn:hover {
+    @include cta-hover;
+}
+
+// Off Canvas Welcome Message Styling 
+
+.welcome {
+    @include chivo; 
+    font-size: 20px;
+    position: relative;
+    align-items: center;
+    margin-left: 50px;
+}

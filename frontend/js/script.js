@@ -25,9 +25,7 @@ $(document).ready(function () {
 
     function getAllProjects() {
         let username = sessionStorage.getItem ('username');
-        if (!username) {
-            alert ('Please log in');
-       } else {
+        // AJAX Get Method to get projects from MongoDB
         $.ajax({
             url: `http://${url}/allProjectsFromDB`,
             type: `GET`,
@@ -36,46 +34,21 @@ $(document).ready(function () {
                 let results = document.getElementById('result');
                 results.innerHTML = '';
                 for (let i = 0; i < projectsFromMongo.length; i++) {
+                    let project = projectsFromMongo[i];
                     let createdBy = projectsFromMongo[i].username;
                     console.log(projectsFromMongo[i]);
-                    if (createdBy === username) {
                         results.innerHTML += `
-                        <div class="col-4 mt-3 mb-3">
-                            <div class="card">
-                            <img class="card-img-top" src="${projectsFromMongo[i].project_img}" alt="${projectsFromMongo[i].project_name} image">
-                                <div class="card-body">
-                                    <h5 class="card-title">${projectsFromMongo[i].project_name}</h5>
-                                     <button value="${projectsFromMongo[i]._id}" class="btn delete btn-primary" type="button" name="button">Delete</button>
-                                     <button value="${projectsFromMongo[i]._id}" data-bs-toggle="modal" data-bs-target="#editModal" class="btn edit btn-primary" type="button" name="button">Edit</button>
-                                     <button value="${projectsFromMongo[i]._id}" data-bs-toggle="modal" data-bs-target="#readmoreModal" class="btn readmore btn-primary" type="button" name="button">Read More</button>
-                                </div>
-                            </div>
-                        </div>
+                        ${project.project_name}
+                        ${project.project_img}
+                        ${project.project_description}
                         `;
-                    } else {
-                        results.innerHTML += `
-                        <div class="col-4 mt-3 mb-3">
-                            <div class="card">
-                            <img class="card-img-top" src="${projectsFromMongo[i].image_url}" alt="${prjoectsFromMongo[i].name} image">
-                                <div class="card-body">
-                                    <h5 class="card-title">${projectsFromMongo[i].project_name}</h5>
-                                     <button value="${projectsFromMongo[i]._id}" data-bs-toggle="modal" data-bs-target="#readmoreModal" class="btn readmore btn-primary" type="button" name="button">Read More</button>
-                                </div>
-                            </div>
-                        </div>
-                        `;
-                    }
-
-                    editProducts();
-                    deleteButtons();
-                    readmore();
                 }
             },
             error: function () {
                 alert('Unable to get projects');
             }
         });
-    }
+    // }
 }
 
     //View Projects onclick of View Projects Button
@@ -93,12 +66,10 @@ $(document).ready(function () {
     offCanvasOpen.addEventListener("click", function () {
         sidebar.classList.toggle("is-hidden");
     });
-    console.log(offCanvasOpen);
 
     offCanvasClose.addEventListener("click", function () {
         sidebar.classList.toggle("is-hidden");
     });
-    console.log(offCanvasClose);
 
 
 
@@ -154,13 +125,15 @@ $(document).ready(function () {
 
     // Log in User
     $('#loginBtn').click(function (event) {
+        // prevents reloading on submit
         event.preventDefault();
         let username = $('#username').val();
         let password = $('#password').val();
-
+        // remove logs!!!!
         console.log(username, password);
-
+        // if statement for username & password values
         if (username == '' || password == '') {
+            // remove alerts!!!!!
             alert('Please enter all details');
         } else {
             $.ajax({
@@ -172,28 +145,32 @@ $(document).ready(function () {
                 },
                 success: function (user) {
                     //console.log(user);
-
                     console.log("ajax working");
-
+                    // error msg for backend
                     if (user == 'User not found. Please try again') {
                         alert('User not found. Please try again');
                     } else if (user == 'not authorized') {
+                        // remove alerts!!!!
                         alert('Please try with correct details');
+                        // reset & clear input values
                         $('#login-username').val('');
                         $('#password').val('');
-                    } else {
-                        sessionStorage.setItem('userID', user['_id']);
-                        sessionStorage.setItem('userName', user['username']);
-                        sessionStorage.setItem('userEmail', user['email']);
+                    } else { //else statement if login is successful 
 
-                        console.log(sessionStorage);
-
-                        // let loggedIn = document.querySelector('.logged-in');
-                        // loggedIn.innerHTML = `<p>Logged in as <span class="text-danger">${username.toUpperCase()}</span></p>`;
-                        // alert(`Welcome back ${username.toUpperCase()}!`);
+                        // function to populate welcome msg in inner html 
+                        let welcomeCont = document.getElementById('loggedIn');
+                        let loggedInUser = username.toUpperCase();
+                        welcomeCont.innerHTML = `<h2>Welcome, ${loggedInUser}</h2>`;
+                        // hide login form
+                        $('#loginForm').hide();
+                        // hide login btn 
+                        $('#loginBtn').hide(); 
+                        // show logout btn
+                        $('#logoutBtn').show();
                     } // end of ifs
                 }, //success
                 error: function () {
+                    // REMOVE LOGS!!!
                     console.log('error: cannot call api');
                     alert('Unable to login - unable to call api');
                 } //error
@@ -202,11 +179,10 @@ $(document).ready(function () {
     }); //end of login click function
 
     // Logout
-    $('#logout').click(function () {
+    $('#logoutBtn').click(function () {
         sessionStorage.clear();
-        alert('You are now logged out');
-        console.log(sessionStorage);
-        window.location.href = '/index.html';
+        // . in ./ represents root folder, redirects to new page
+        window.location.href = './index.html';
     });
     // End of log out
 

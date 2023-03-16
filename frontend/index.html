@@ -21,34 +21,42 @@
     <div class="body-container">
 
         <!-- Off Canvas Open Btn -->
-        <div class="login">
+        <div class="login" id="ocLogin">
             <a href="#" class="off-canvas-open">Login</a>
         </div>
         <!-- End of Off Canvas Open Btn -->
 
         <!-- Off Canvas -->
         <div class="sidebar is-hidden">
-
             <!-- Login Form -->
             <form action="action_page.php" method="post">
-
+                <!-- Off Canvas Close btn -->
                 <div>
                     <a href="#" class="off-canvas-close">Close</a>
                 </div>
-
-                <div class="form-container">
+                <!-- End of Off Canvas Close -->
+                <!-- Form Container -->
+                <div class="form-container" id="loginForm">
+                    <!-- Username -->
                     <label for="username">Username</label>
                     <input id="username" type="text" placeholder="Enter Username" name="username" required>
-
+                    <!-- Password -->
                     <label for="password">Password</label>
                     <input id="password" type="password" placeholder="Enter Password" name="password" required>
                 </div>
-
+                <!-- End of Form Container -->
+                <!-- Div -->
+                <div class="welcome" id="loggedIn">
+                    
+                </div>
+                <!-- Login Submit Btn -->
                 <button id="loginBtn" type="login-submit">Login</button>
-
+                <!-- End of Login Submit Btn -->
             </form>
             <!-- End of Login Form -->
-
+            <!-- Logout Submit Btn -->
+            <button id="logoutBtn" type="logout-submit" hidden="hidden">Logout</button>
+            <!-- End of Logout Submit Btn -->
         </div>
         <!-- End of Off Canavas -->
 
