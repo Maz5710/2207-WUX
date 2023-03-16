@@ -44,7 +44,7 @@
                     <input id="password" type="password" placeholder="Enter Password" name="password" required>
                 </div>
 
-                <button id="loginBtn" type="login-submit">Login</button>
+                <button id="loginBtn" type="submit">Login</button>
 
             </form>
             <!-- End of Login Form -->
@@ -76,13 +76,10 @@
                         <div class="projects-carousel">
                             <!-- Item Project -->
                             <div class="item-project">
-                                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
-                                    incididunt
-                                    ut
-                                    labore et dolore magna aliqua. Elementum sagittis vitae et leo duis ut. Ut tortor
-                                    pretium
-                                    viverra suspendisse potenti.
-                                </p>
+                                <h6 class="project-title">Project Name</h6>
+                                <img class="project-img"
+                                    src="https://images.unsplash.com/photo-1678867346351-95e8045c0171?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=928&q=80"
+                                    alt="">
                                 <!-- Action Buttons for Edit, Delete -->
                                 <div class="action-btns">
                                     <!-- Edit Accordion -->
@@ -95,6 +92,23 @@
                                             <!-- End of Edit Button -->
                                             <!-- Edit Accordion Content -->
                                             <div class="edit-accordion-content">
+                                                <h4>EDIT</h4>
+                                                <form action="action_page.php">
+
+                                                    <div class="form-container">
+                                                        <label for="projectName">Project Name</label>
+                                                        <input id="projectName" type="text"
+                                                            placeholder="Enter Project Name" name="projectName"
+                                                            required>
+
+                                                        <label for="imageurl"> Enter the image url </label>
+                                                        <input type="text" id="imageurl" placeholder="Enter Image URL"
+                                                            name="imageurl">
+                                                    </div>
+
+                                                    <button id="submitEdit" type="submit">Submit</button>
+
+                                                </form>
                                             </div>
                                             <!-- End of Edit Accordion Content -->
                                         </div>
@@ -111,16 +125,12 @@
                                             <!-- End of Delete Button -->
                                             <!-- Delete Accordion Content -->
                                             <div class="delete-accordion-content">
-                                                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-                                                    eiusmod
-                                                    tempor incididunt
-                                                    ut
-                                                    labore et dolore magna aliqua. Elementum sagittis vitae et leo duis
-                                                    ut.
-                                                    Ut
-                                                    tortor
-                                                    pretium
-                                                    viverra suspendisse potenti.</p>
+                                                <h4>DELETE</h4>
+                                                <h6>Are you sure you want to delete this project?</h6>
+                                                <div>
+                                                    <button id="submitDelete" type="submit">Yes</button>
+                                                    <button id="resetDelete" type="reset">No</button>
+                                                </div>
                                             </div>
                                             <!-- End of Delete Accordion Content -->
                                         </div>
@@ -131,103 +141,143 @@
                             </div>
                             <!-- End of Item Project -->
                             <div class="item-project">
-                                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
-                                    incididunt
-                                    ut
-                                    labore et dolore magna aliqua. Elementum sagittis vitae et leo duis ut. Ut tortor
-                                    pretium
-                                    viverra suspendisse potenti.
-                                </p>
+                                <h6 class="project-title">Project Name</h6>
+                                <img class="project-img"
+                                    src="https://images.unsplash.com/photo-1678867346351-95e8045c0171?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=928&q=80"
+                                    alt="">
+                                <!-- Action Buttons for Edit, Delete -->
                                 <div class="action-btns">
+                                    <!-- Edit Accordion -->
                                     <div class="edit-accordion">
+                                        <!-- Edit Accordion Item -->
                                         <div class="edit-accordion-item">
+                                            <!-- Edit Button -->
                                             <a role="button" id="editAccordionButton" aria-expanded="false"><span
                                                     class="edit-accordion-title">Edit</a>
+                                            <!-- End of Edit Button -->
+                                            <!-- Edit Accordion Content -->
                                             <div class="edit-accordion-content">
-                                                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-                                                    eiusmod
-                                                    tempor incididunt
-                                                    ut
-                                                    labore et dolore magna aliqua. Elementum sagittis vitae et leo duis
-                                                    ut.
-                                                    Ut
-                                                    tortor
-                                                    pretium
-                                                    viverra suspendisse potenti.</p>
+                                                <h4>EDIT</h4>
+                                                <form action="action_page.php">
+
+                                                    <div class="form-container">
+                                                        <label for="projectName">Project Name</label>
+                                                        <input id="projectName" type="text"
+                                                            placeholder="Enter Project Name" name="projectName"
+                                                            required>
+
+                                                        <label for="imageurl"> Enter the image url </label>
+                                                        <input type="text" id="imageurl" placeholder="Enter Image URL"
+                                                            name="imageurl">
+                                                    </div>
+
+                                                    <button id="submitEdit" type="submit">Submit</button>
+
+                                                </form>
                                             </div>
+                                            <!-- End of Edit Accordion Content -->
                                         </div>
+                                        <!-- End of Edit Accordion Item -->
                                     </div>
+                                    <!-- End of Edit Accordion -->
+                                    <!-- Delete Accordion -->
                                     <div class="delete-accordion">
+                                        <!-- Delete Accordion Item -->
                                         <div class="delete-accordion-item">
+                                            <!-- Delete Accordion Button-->
                                             <a role="button" id="deleteAccordionButton" aria-expanded="false"><span
                                                     class="delete-accordion-title">Delete</a>
+                                            <!-- End of Delete Button -->
+                                            <!-- Delete Accordion Content -->
                                             <div class="delete-accordion-content">
-                                                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-                                                    eiusmod
-                                                    tempor incididunt
-                                                    ut
-                                                    labore et dolore magna aliqua. Elementum sagittis vitae et leo duis
-                                                    ut.
-                                                    Ut
-                                                    tortor
-                                                    pretium
-                                                    viverra suspendisse potenti.</p>
+                                                <h4>DELETE</h4>
+                                                <h6>Are you sure you want to delete this project?</h6>
+                                                <div>
+                                                    <button id="submitDelete" type="submit">Yes</button>
+                                                    <button id="resetDelete" type="reset">No</button>
+                                                </div>
                                             </div>
+                                            <!-- End of Delete Accordion Content -->
                                         </div>
+                                        <!-- End of Delete Accordion Item -->
                                     </div>
+                                    <!-- End of Delete Accordion -->
                                 </div>
                             </div>
+                            <!-- End of Item Project -->
+
                             <div class="item-project">
-                                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
-                                    incididunt
-                                    ut
-                                    labore et dolore magna aliqua. Elementum sagittis vitae et leo duis ut. Ut tortor
-                                    pretium
-                                    viverra suspendisse potenti.
-                                </p>
+                                <h6 class="project-title">Project Name</h6>
+                                <img class="project-img"
+                                src="https://images.unsplash.com/photo-1678669701650-46851754bcef?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1771&q=80"
+                                alt="">
+                                <!-- Action Buttons for Edit, Delete -->
                                 <div class="action-btns">
+                                    <!-- Edit Accordion -->
                                     <div class="edit-accordion">
+                                        <!-- Edit Accordion Item -->
                                         <div class="edit-accordion-item">
+                                            <!-- Edit Button -->
                                             <a role="button" id="editAccordionButton" aria-expanded="false"><span
                                                     class="edit-accordion-title">Edit</a>
+                                            <!-- End of Edit Button -->
+                                            <!-- Edit Accordion Content -->
                                             <div class="edit-accordion-content">
-                                                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-                                                    eiusmod
-                                                    tempor incididunt
-                                                    ut
-                                                    labore et dolore magna aliqua. Elementum sagittis vitae et leo duis
-                                                    ut.
-                                                    Ut
-                                                    tortor
-                                                    pretium
-                                                    viverra suspendisse potenti.</p>
+                                                <h4>EDIT</h4>
+                                                <form action="action_page.php">
+
+                                                    <div class="form-container">
+                                                        <label for="projectName">Project Name</label>
+                                                        <input id="projectName" type="text"
+                                                            placeholder="Enter Project Name" name="projectName"
+                                                            required>
+
+                                                        <label for="imageurl"> Enter the image url </label>
+                                                        <input type="text" id="imageurl" placeholder="Enter Image URL"
+                                                            name="imageurl">
+                                                    </div>
+
+                                                    <button id="submitEdit" type="submit">Submit</button>
+
+                                                </form>
                                             </div>
+                                            <!-- End of Edit Accordion Content -->
                                         </div>
+                                        <!-- End of Edit Accordion Item -->
                                     </div>
+                                    <!-- End of Edit Accordion -->
+                                    <!-- Delete Accordion -->
                                     <div class="delete-accordion">
+                                        <!-- Delete Accordion Item -->
                                         <div class="delete-accordion-item">
+                                            <!-- Delete Accordion Button-->
                                             <a role="button" id="deleteAccordionButton" aria-expanded="false"><span
                                                     class="delete-accordion-title">Delete</a>
+                                            <!-- End of Delete Button -->
+                                            <!-- Delete Accordion Content -->
                                             <div class="delete-accordion-content">
-                                                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-                                                    eiusmod
-                                                    tempor incididunt
-                                                    ut
-                                                    labore et dolore magna aliqua. Elementum sagittis vitae et leo duis
-                                                    ut.
-                                                    Ut
-                                                    tortor
-                                                    pretium
-                                                    viverra suspendisse potenti.</p>
+                                                <h4>DELETE</h4>
+                                                <h6>Are you sure you want to delete this project?</h6>
+                                                <div>
+                                                    <button id="submitDelete" type="submit">Yes</button>
+                                                    <button id="resetDelete" type="reset">No</button>
+                                                </div>
                                             </div>
+                                            <!-- End of Delete Accordion Content -->
                                         </div>
+                                        <!-- End of Delete Accordion Item -->
                                     </div>
+                                    <!-- End of Delete Accordion -->
                                 </div>
                             </div>
+                            <!-- End of Item Project -->
                         </div>
                         <!-- End of Project Carousel -->
                         <div class="profile">
-                            <p>test</p>
+                            <img src="" alt="" class="profile-img">
+                            <p class="bio"></p>
+                            <a href="" class="link-1"></a>
+                            <a href="" class="link-2"></a>
                         </div>
                     </div>
                     <!-- End of Accordion Content -->
@@ -237,16 +287,6 @@
             <!-- End of User Accordion Div -->
         </div>
         <!-- End of Main Accordion Container -->
-
-
-        <!-- Portfolio Section -->
-        <div class="container p-5">
-            <h1 class="mt-5">Projects</h1>
-            <button id="viewProjects" class="btn btn-primary" type="button">View Projects</button>
-            <div class="row" id="result">
-            </div>
-        </div>
-        <!-- End of Portfolio Section -->
 
     </div>
 

@@ -75,6 +75,7 @@ body {
     padding: 0;
     background-color: $offwhite;
 
+    // Login Btn to trigger Off Canvas
     .off-canvas-open {
         writing-mode: vertical-rl;
         rotate: 180deg;
@@ -87,12 +88,14 @@ body {
         right: 20px;
     }
 
+    // Hover Effect for Login Btn to trigger Off Canvas
     .off-canvas-open:hover {
         transition: 0.15s ease-in;
         border-left: solid 3px $blue;
         transform: translateX(-3px);
     }
 
+    // Off Canvas - Start of Nesting
     .sidebar {
         z-index: 99;
         position: fixed;
@@ -104,6 +107,7 @@ body {
         border: solid 2px $blue;
         transition: transform 0.3s ease-out;
 
+        // Contains Login Form Input & Close Btn
         form {
             display: flex;
             flex-direction: column;
@@ -112,6 +116,7 @@ body {
             width: 100%;
             height: 70%;
 
+            // Close Btn for Off Canvas
             .off-canvas-close {
                 @include action-btn;
                 position: absolute;
@@ -119,10 +124,12 @@ body {
                 right: 15px;
             }
 
+            // Hover Effect for Close Btn for Off Canvas
             .off-canvas-close:hover {
                 @include action-btn-hover;
             }
 
+            // Login & Input
             .form-container {
                 display: flex;
                 flex-direction: column;
@@ -148,6 +155,7 @@ body {
 
             }
 
+
             #loginBtn {
                 @include cta;
                 position: relative;
@@ -162,10 +170,32 @@ body {
 
     }
 
+    // Logout Button 
+    #logoutBtn {
+        @include cta;
+        position: relative;
+        left: 200px;
+    }
+    #logoutBtn:hover {
+        @include cta-hover;
+    }
+    // Off Canvas Welcome Message Styling 
+    .welcome {
+        @include chivo; 
+        font-size: 20px;
+        position: relative;
+        align-items: center;
+        margin-left: 50px;
+    }
+
+    // End of Off Canvas Nesting
+
+    // Off Canvas transform
     .sidebar.is-hidden {
         transform: translateX(405px);
     }
 
+    // 2207-WUX Title
     .title-container {
         margin-left: 80px;
         margin-top: 175px;
@@ -179,14 +209,11 @@ body {
 
     }
 
+    // Accordion - Start of Nesting
     .accordion {
 
+        // Name Surname Btn
         #accordionButton {
-            // position: relative;
-            // display: block;
-            // text-align: left;
-            // width: 100%;
-            // padding: 1em 0;
             @include chivo;
             font-size: 65px;
             color: $grey;
@@ -210,120 +237,216 @@ body {
 
             +.accordion-content {
                 opacity: 1;
+                max-height: 100%;
+                width: 99.85vw;
                 transition: all 200ms linear;
-                will-change: opacity, max-height;
-                border: solid 1px $blue;
+                border: solid 2px $blue;
+                overflow-x: scroll;
             }
         }
 
+        // Accordion Content
         .accordion-content {
             opacity: 0;
+            max-height: 0;
             overflow: hidden;
             transition: opacity 200ms linear, max-height 200ms linear;
             will-change: opacity, max-height;
 
+            // Project Carousel - Start of Nesting
             .projects-carousel {
                 display: flex;
                 flex-direction: row;
                 justify-content: space-evenly;
+                width: 100%;
+                border-bottom: solid 2px $blue;
+                overflow-x: scroll;
 
+                // Individual Project Item
+                .item-project {
+                    width: 33.3%;
+                    height: 100%;
+                    display: flex;
+                    flex-direction: column;
+                    padding: 30px;
+                    border-right: solid 2px $blue;
+
+                    .project-title {
+                        @include chivo;
+                        font-size: 20px;
+                        color: $night;
+                        margin: 0;
+                    }
+
+                    .project-img {
+                        padding: 20px 0;
+                        margin: auto;
+                        max-width: 30.5vw;
+                        max-height: 26.5vh;
+                    }
+
+                    .project-img:hover {
+                        padding: 5px 0;
+                        margin: auto;
+                        max-width: 34vw;
+                        max-height: 30vh;
+                    }
+
+                }
+
+                // Action Btns - Edit, Delete, Add Project
                 .action-btns {
                     display: flex;
                     flex-direction: row;
-                    justify-content: space-evenly;
+                    justify-content: space-around;
                 }
             }
         }
     }
 
+    // Edit Project Btn
     .edit-accordion {
+
 
         #editAccordionButton {
             @include action-btn;
+            cursor: pointer;
 
             &:hover {
                 @include action-btn-hover;
             }
 
-            &:focus,
-            &:active {
-                @include action-btn-focus;
-            }
-
-            .accordion-title {
-                padding-left: 80px;
-            }
+            // .edit-accordion-title {
+            //     padding-left: 80px;
+            // }
 
         }
 
         #editAccordionButton[aria-expanded='true'] {
-            color: $night;
+            border-bottom: solid 2px $night;
 
             +.edit-accordion-content {
+                margin-top: 15px;
                 opacity: 1;
+                max-height: 50vh;
+                width: 99.75vw;
+                position: absolute;
+                left: 0;
+                background-color: $offwhite;
                 transition: all 200ms linear;
-                will-change: opacity, max-height;
-                border: solid 1px $blue;
+                will-change: opacity;
+                border: solid 2px $blue;
             }
         }
 
         .edit-accordion-content {
             opacity: 0;
+            max-height: 0;
             overflow: hidden;
-            transition: opacity 200ms linear, max-height 200ms linear;
-            will-change: opacity, max-height;
+            transition: opacity 200ms linear;
+            will-change: opacity;
 
-            p {
-                font-size: 1rem;
-                font-weight: 300;
-                margin: 2em 0;
+            h4 {
+                @include chivo;
+                font-size: 50px;
+                color: $blue;
+                margin: 40px;
             }
+
+            .form-container {
+
+                label {
+                    @include rmBold;
+                    font-size: 18px;
+                    margin-bottom: 5px;
+                }
+
+                input {
+                    @include rmReg;
+                    font-size: 18px;
+                    height: 40px;
+                    margin-bottom: 25px;
+                    color: $onyx;
+                    background-color: $grey;
+                    border: solid 1px $night;
+                }
+
+            }
+
+            button {
+                @include cta;
+                width: 100px;
+            }
+
+            button:hover {
+                @include cta-hover;
+            }
+
         }
     }
 
+    // Delete Project Btn
     .delete-accordion {
+
+        .delete-accordion-item {
+            text-align: right;
+        }
 
         #deleteAccordionButton {
             @include action-btn;
+            cursor: pointer;
 
             &:hover {
                 @include action-btn-hover;
             }
 
-            &:focus,
-            &:active {
-                @include action-btn-focus;
-            }
-
-            .accordion-title {
-                padding-left: 80px;
-            }
-
         }
 
         #deleteAccordionButton[aria-expanded='true'] {
-            color: $night;
+            border-bottom: solid 2px $night;
 
             +.delete-accordion-content {
+                text-align: left;
+                margin-top: 15px;
                 opacity: 1;
+                max-height: 50vh;
+                width: 99.75vw;
+                position: absolute;
+                left: 0;
+                background-color: $offwhite;
                 transition: all 200ms linear;
-                will-change: opacity, max-height;
-                border: solid 1px $blue;
+                will-change: opacity;
+                border: solid 2px $blue;
             }
         }
 
         .delete-accordion-content {
             opacity: 0;
+            max-height: 0;
             overflow: hidden;
-            transition: opacity 200ms linear, max-height 200ms linear;
-            will-change: opacity, max-height;
+            transition: opacity 200ms linear;
+            will-change: opacity;
 
-            p {
-                font-size: 1rem;
-                font-weight: 300;
-                margin: 2em 0;
+            h4 {
+                @include chivo;
+                font-size: 50px;
+                color: $blue;
+            }
+
+            h6 {
+                @include rmBold;
+                font-size: 18px;
+                color: $night;
+            }
+
+            button {
+                @include cta;
+                width: 100px;
+            }
+
+            button:hover {
+                @include cta-hover;
             }
         }
     }
-
 }
