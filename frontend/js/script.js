@@ -165,7 +165,7 @@ $(document).ready(function () {
                         // function to populate welcome msg in inner html                         
                         let welcomeCont = document.getElementById('loggedIn');
                         let loggedInUser = username.toUpperCase();
-                        welcomeCont.innerHTML = `<h2>Welcome, ${loggedInUser}</h2>`
+                        welcomeCont.innerHTML = `<h2>Welcome, ${loggedInUser}</h2>`;
                         // hide login form                        
                         $('#loginForm').hide();
                         // hide login btn                         
