@@ -24,7 +24,10 @@ $(document).ready(function () {
     });
 
     function getAllProjects() {
-        let username = sessionStorage.getItem ('username');
+        let username = sessionStorage.getItem('username');
+        //     if (!username) {
+        //         alert ('Please log in');
+        //    } else {
         // AJAX Get Method to get projects from MongoDB
         $.ajax({
             url: `http://${url}/allProjectsFromDB`,
@@ -37,11 +40,14 @@ $(document).ready(function () {
                     let project = projectsFromMongo[i];
                     let createdBy = projectsFromMongo[i].username;
                     console.log(projectsFromMongo[i]);
-                        results.innerHTML += `
+                    results.innerHTML += `
                         ${project.project_name}
                         ${project.project_img}
                         ${project.project_description}
                         `;
+                    // editProducts();
+                    // deleteButtons();
+                    // readmore();
                 }
             },
             error: function () {
@@ -55,7 +61,6 @@ $(document).ready(function () {
     $('#viewProjects').click(function () {
         getAllProjects();
     }); // End of View Projects
-
 
 
     // Off Canvas Button
@@ -92,7 +97,7 @@ $(document).ready(function () {
 
     items.forEach(item => item.addEventListener('click', toggleAccordion));
 
-    
+
     function toggleEditAccordion() {
         const editToggle = this.getAttribute("aria-expanded");
 
@@ -119,11 +124,11 @@ $(document).ready(function () {
             this.setAttribute("aria-expanded", "true");
         }
     }
-  
+
     deleteItemAccordion.forEach(item => item.addEventListener("click", toggleDeleteAccordion));
 
 
-    // Log in User
+    // Log in User    
     $('#loginBtn').click(function (event) {
         // prevents reloading on submit
         event.preventDefault();
@@ -144,44 +149,44 @@ $(document).ready(function () {
                     password: password
                 },
                 success: function (user) {
-                    //console.log(user);
+                    //console.log(user);                    
                     console.log("ajax working");
-                    // error msg for backend
+                    // error msg for backend                    
                     if (user == 'User not found. Please try again') {
                         alert('User not found. Please try again');
                     } else if (user == 'not authorized') {
-                        // remove alerts!!!!
+                        // remove alerts!!!!                        
                         alert('Please try with correct details');
-                        // reset & clear input values
+                        // reset & clear input values                        
                         $('#login-username').val('');
                         $('#password').val('');
-                    } else { //else statement if login is successful 
-
-                        // function to populate welcome msg in inner html 
+                    } else {
+                        //else statement if login is successful                         
+                        // function to populate welcome msg in inner html                         
                         let welcomeCont = document.getElementById('loggedIn');
                         let loggedInUser = username.toUpperCase();
-                        welcomeCont.innerHTML = `<h2>Welcome, ${loggedInUser}</h2>`;
-                        // hide login form
+                        welcomeCont.innerHTML = `<h2>Welcome, ${loggedInUser}</h2>`
+                        // hide login form                        
                         $('#loginForm').hide();
-                        // hide login btn 
-                        $('#loginBtn').hide(); 
-                        // show logout btn
+                        // hide login btn                         
+                        $('#loginBtn').hide();
+                        // show logout btn                        
                         $('#logoutBtn').show();
-                    } // end of ifs
-                }, //success
+                    } // end of ifs                
+                }, //success                
                 error: function () {
-                    // REMOVE LOGS!!!
+                    // REMOVE LOGS!!!                    
                     console.log('error: cannot call api');
                     alert('Unable to login - unable to call api');
-                } //error
-            }); //end of ajax
-        } //end of else
-    }); //end of login click function
+                } //error            
+            }); //end of ajax        
+        } //end of else    
+    }); //end of login click function    
 
-    // Logout
+    // Logout    
     $('#logoutBtn').click(function () {
         sessionStorage.clear();
-        // . in ./ represents root folder, redirects to new page
+        // . in ./ represents root folder, redirects to new page        
         window.location.href = './index.html';
     });
     // End of log out
