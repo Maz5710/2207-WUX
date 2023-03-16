@@ -28,6 +28,7 @@ $(document).ready(function () {
         //     if (!username) {
         //         alert ('Please log in');
         //    } else {
+        // AJAX Get Method to get projects from MongoDB
         $.ajax({
             url: `http://${url}/allProjectsFromDB`,
             type: `GET`,
@@ -53,9 +54,8 @@ $(document).ready(function () {
                 alert('Unable to get projects');
             }
         });
-        // }
-    }
-
+    // }
+}
 
     //View Projects onclick of View Projects Button
     $('#viewProjects').click(function () {
@@ -71,12 +71,10 @@ $(document).ready(function () {
     offCanvasOpen.addEventListener("click", function () {
         sidebar.classList.toggle("is-hidden");
     });
-    console.log(offCanvasOpen);
 
     offCanvasClose.addEventListener("click", function () {
         sidebar.classList.toggle("is-hidden");
     });
-    console.log(offCanvasClose);
 
 
 
@@ -132,15 +130,15 @@ $(document).ready(function () {
 
     // Log in User    
     $('#loginBtn').click(function (event) {
-        // prevents reloading on submit        
+        // prevents reloading on submit
         event.preventDefault();
         let username = $('#username').val();
         let password = $('#password').val();
-        // remove logs!!!!        
+        // remove logs!!!!
         console.log(username, password);
-        // if statement for username & password values        
+        // if statement for username & password values
         if (username == '' || password == '') {
-            // remove alerts!!!!!            
+            // remove alerts!!!!!
             alert('Please enter all details');
         } else {
             $.ajax({
