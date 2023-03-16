@@ -52,7 +52,8 @@ app.listen(port, () => console.log(`My fullstack app is listening on port ${port
 app.get('/allProjectsFromDB', (req, res) => {
     Project.find().then(result => {
         res.send(result)
-    })
+        console.log('get projects working');
+    });
 })
 
 // Post Method to CREATE a project
@@ -83,17 +84,17 @@ app.patch('/updateProject/:id', (req, res) => {
         }
         Project.updateOne({
             _id: idParam
-        }, updatedProject).
+        }, updatedProject);
         then(result => {
             res.send(result);
         }).catch(err => res.send(err))
     })
 })
 
-// DELETE using 'DELETE' project
+// DELETE Project
 app.delete('/deleteProject/:id', (req,res) => {
     const idParam = req.params.id;
-    project.findOne({
+    Project.findOne({
         _id: idParam
     }, (err, project) => {
         if (project) {
@@ -125,10 +126,10 @@ app.post('/loginUser', ( req, res)=>{
         if (req.body.password === userResult.password){
           res.send(userResult);
         } else {
-          res.send('not authorized');
+          res.send('Not authorised');
         }// inner if
       } else {
-        res.send('user not found. Please register');
+        res.send('User not found. Please try again.');
       }//outer if
     });//find one ends
   });//end of post for login

@@ -23,7 +23,9 @@ $(document).ready(function () {
         }
     });
 
+    
     function getAllProjects() {
+
         let username = sessionStorage.getItem('username');
         //     if (!username) {
         //         alert ('Please log in');
@@ -40,14 +42,12 @@ $(document).ready(function () {
                     let project = projectsFromMongo[i];
                     let createdBy = projectsFromMongo[i].username;
                     console.log(projectsFromMongo[i]);
+
                     results.innerHTML += `
                         ${project.project_name}
                         ${project.project_img}
                         ${project.project_description}
                         `;
-                    // editProducts();
-                    // deleteButtons();
-                    // readmore();
                 }
             },
             error: function () {
